@@ -13,6 +13,6 @@
   else {
     $reply = "Hello";
   }
-  $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply);
+  $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
   echo("test");
 ?>
