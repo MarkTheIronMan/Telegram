@@ -7,13 +7,13 @@
   $text = $result["message"]["text"];
   $chat_id = $result["message"]["chat"]["id"]; 
   $name = $result["message"]["from"]["username"]; 
-  $wasStart = false;
-  $key = 11020a5d-6bfd-4b23-9b79-a24644bd3105;
-  $city = "Москва";
+  $wasStart = FALSE;
+  $key = '11020a5d-6bfd-4b23-9b79-a24644bd3105';
+  $city = "Moscow";
   $country_name = "Russia";
   $keyboard = [["Да"], ["Нет"]];
   if ($text == "/start") {
-  	$wasStart = true;
+  	$wasStart = TRUE;
   	if ($name) {
       $reply = "Здравствуй, " .$name;
     }
@@ -25,9 +25,10 @@
 
   if ($text == "/info") && ($wasStart) {
     $request = 'api.airvisual.com/v2/states?country='.$country_name.'&key='.$key.'';
+    $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
     $reply = ($request);
   } 
   
-  $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
+  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
   echo("test");
 ?>
