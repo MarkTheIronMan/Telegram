@@ -13,4 +13,5 @@
   else {
     $reply = "Hello";
   }
+  echo("test");
 ?>
