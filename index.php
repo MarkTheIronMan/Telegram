@@ -10,10 +10,10 @@
   $wasStart = FALSE;
   $apikey = '11020a5d-6bfd-4b23-9b79-a24644bd3105';
   $city = "Moscow";
-  $country_name = "Russia";
+  $country_name = "canada";
   $keyboard = [["Да"], ["Нет"]];
 
-  if (($text == "/start") && ($wasStart == false)) {
+  if (($text == "/sayHello") && ($wasStart == false)) {
   	$wasStart = TRUE;
   	if ($name) {
       $reply = "Здравствуй, " .$name;
@@ -23,6 +23,11 @@
     }
   }
   $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
+
+  if ($text = "/more") {
+  	$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
+    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $city, 'reply_markup' => $reply_markup ]);
+  }
 
   if (($text == "/info") && ($wasStart)) {
     $request = 'http://api.airvisual.com/v2/states?country='.$country_name.'&key='.$apikey.'';
