@@ -13,7 +13,7 @@
   $country_name = "canada";
   $keyboard = [["Да"], ["Нет"]];
 
-  if (($text == "/sayHello") && ($wasStart == false)) {
+  if (($text == "/sayHello") and ($wasStart == false)) {
   	$wasStart = TRUE;
   	if ($name) {
       $reply = "Здравствуй, " .$name;
@@ -24,12 +24,12 @@
   }
   $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
 
-  if ($text = "/more") {
+  if ($text == "/more") {
   	$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $city, 'reply_markup' => $reply_markup ]);
   }
 
-  if (($text == "/info") && ($wasStart)) {
+  if (($text == "/info") and ($wasStart)) {
     $request = 'http://api.airvisual.com/v2/states?country='.$country_name.'&key='.$apikey.'';
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
     $reply = $request;
