@@ -13,7 +13,7 @@
   $country_name = "Russia";
   $keyboard = [["Да"], ["Нет"]];
 
-  if ($text == "/start") && !($wasStart)) {
+  if (($text == "/start") && ($wasStart == false)) {
   	$wasStart = TRUE;
   	if ($name) {
       $reply = "Здравствуй, " .$name;
