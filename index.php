@@ -24,7 +24,7 @@
   }
   $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
 
-  if ($text == "/info") && ($wasStart) {
+  if (($text == "/info") && ($wasStart)) {
     $request = "http://api.airvisual.com/v2/states?country=".$country_name."&key=".$apikey."";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
     $reply = $request;
