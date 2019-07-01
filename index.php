@@ -9,5 +9,8 @@
   $name = $result["message"]["from"]["username"]; 
   if ($text == "/start") {
   	$reply = "Welcome, " .$name;
+  } 
+  else {
+    $reply = "Hello";
   }
 ?>
