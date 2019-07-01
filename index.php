@@ -21,8 +21,9 @@
       $reply = "Здравствуй, странник";
     }
   }
+  $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
 
-  if ($wasStart) {
+  if ($text == "/info") && ($wasStart) {
     $request = 'api.airvisual.com/v2/states?country='.$country_name.'&key='.$key.'';
     $reply = ($request);
   } 
