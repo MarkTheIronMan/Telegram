@@ -43,6 +43,8 @@
   if ($text == "/info") {
   	$ch = curl_init($url);
   	curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($s,CURLOPT_HEADER, 0);
+    curl_setopt($s,CURLOPT_RETURNTRANSFER, 1);
     $request = curl_exec($ch);
 
   /*  $request = file_get_contents($url); */
