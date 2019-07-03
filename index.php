@@ -16,6 +16,7 @@
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.apikey.'';
   $mark = FALSE;
+  $data = $callback_query['data'];
  
 
    function getInfo($arg): string {
@@ -93,19 +94,19 @@
     $params['parse_mode'] = 'HTML';
     $params['chat_id'] = $result["message"]["chat"]["id"];
 
-    $button_en = array('text' => 'Последние города', 'callback_data' => "checkCities");
-    $button_ru = array('text' => 'Новый город', 'callback_data' => "newCity");
+    $button_one = array('text' => 'Последние города', 'callback_data' => "checkCities");
+    $button_two = array('text' => 'Новый город', 'callback_data' => "newCity");
         
-    $keyboard = array('inline_keyboard' => array(array($button_en, $button_ru)));
+    $keyboard = array('inline_keyboard' => array(array($button_one, $button_two)));
     $params['reply_markup'] =json_encode($keyboard, TRUE);  
     $telegram->sendMessage($params);
 
-    if ($button_ru['callback_data'] == "newCity") {
-      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => RESP]);
-
+    switch($data) {
+    case 'checkCities';
+    sendMessage($chat_id_in, "plz");
+    break;
     }
   }
-
 
   
   echo("test");
