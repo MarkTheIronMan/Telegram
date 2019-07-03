@@ -58,15 +58,15 @@
     $params['parse_mode'] = 'HTML';
     $params['chat_id'] = $result["message"]["chat"]["id"];
 
-    $button_en = array('text' => 'Последние города', 'callback_data' => '/checkCities');
-    $button_ru = array('text' => 'Новый город', 'callback_data' => '/newCity');
+    $button_en = array('text' => 'Последние города', 'callback_data' => "/checkCities");
+    $button_ru = array('text' => 'Новый город', 'callback_data' => "/newCity");
         
     $keyboard = array('inline_keyboard' => array(array($button_en, $button_ru)));
     $params['reply_markup'] = json_encode($keyboard, TRUE);
     $telegram->sendMessage($params);
 
     if ($text == "/newCity") {
-      $telegram->sendMessage(['chat_id' => $chat_id, 'text' = "Введите название города");
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города');
     }
   }
 
