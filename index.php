@@ -33,7 +33,7 @@
   if (($text == "/info") and ($wasStart)) {
     $request = file_get_contents($url);
     $request = json_decode($request, true);
-    $reply = $request["wind"];
+    $reply = $request -> main -> temp_max;
 
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
