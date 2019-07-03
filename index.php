@@ -12,7 +12,7 @@
   $city_name = 'moscow';
   $country_name = "canada";
   $keyboard = [["Да"], ["Нет"]];
-  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$apikey.'';
+  $url = "https://api.openweathermap.org/data/2.5/weather?q=$city_name&appid=$apikey";
 
   if (($text == "/start") and ($wasStart == false)) {
   	$wasStart = TRUE;
