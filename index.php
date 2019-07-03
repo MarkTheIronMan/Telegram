@@ -25,7 +25,7 @@
        $tmp =$request["main"]["temp"];
     /*   $temp = round($temp - 273.15); */
        $wnd =$request["wind"]["speed"];
-       $str = "Температура в ".$nme." составляет ".$tmp." градусов. \nСкорость ветра".$wnd." метров в секунду.";
+       $str = 'Температура в '.$nme.' составляет '.$tmp.' градусов. \nСкорость ветра'.$wnd.' метров в секунду.';
        $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $str]);
     }
 
