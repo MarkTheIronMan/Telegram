@@ -12,6 +12,7 @@
   $city_name = "moscow";
   $country_name = "canada";
   $keyboard = [["Да"], ["Нет"]];
+  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$apikey.'';
 
   if (($text == "/sayHello") and ($wasStart == false)) {
   	$wasStart = TRUE;
@@ -30,13 +31,15 @@
   }
 
   if (($text == "/info") and ($wasStart)) {
-    $request = file_get_contents('https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$apikey.'');
+    $request = file_get_contents($url);
     $request = json_decode($request, true);
- 
+    $reply = $request["wind"];
+
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
-    $reply = $request;
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
   } 
+
+
   
   echo("test");
 ?>
