@@ -102,8 +102,10 @@
     $telegram->sendMessage($params);
 
     switch($data) {
-    case 'checkCities';
-    sendMessage($chat_id_in, "plz");
+    case 'checkCities':
+    $telegram->sendMessage($chat_id_in, "old");
+    case 'newCity':
+    $telegram->sendMessage($chat_id_in, "new");
     break;
     }
   }
