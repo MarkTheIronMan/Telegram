@@ -21,12 +21,13 @@
        $r = curl_exec($ch);
        curl_close($ch);
        $request = json_decode($r, true);
-       $nme =$request["name"];
-       $tmp =$request["main"]["temp"];
+       $nme = $request["name"];
+       $tmp = $request["main"]["temp"];
     /*   $temp = round($temp - 273.15); */
-       $wnd =$request["wind"]["speed"];
-       $str = 'Температура в '.$nme.' составляет '.$tmp.' градусов. \nСкорость ветра'.$wnd.' метров в секунду.';
-       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $str]);
+       $wnd = $request["wind"]["speed"];
+       $str = "Температура в ".$nme." составляет ".$tmp." градусов. \nСкорость ветра".$wnd." метров в секунду.";
+       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $str ]);
+
     }
 
   if (($text == "/start") and ($wasStart == false)) {
