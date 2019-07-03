@@ -65,11 +65,12 @@
     curl_close($ch);
     $request = json_decode($r, true);
     $reply = $request["main"]["temp"];
+    $response = "temperature is about". $reply. 'K';
     echo($reply);
   /*  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);*/
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply/*, 'reply_markup' => $reply_markup*/ ]);
   } 
-
+/*
   if ($text == "/nw") {
   	$reply = RESP;
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
@@ -79,7 +80,7 @@
   } 
 
 
-/*
+
   if ($text == "/fo") {
   	$params['text'] = 'Выберите операцию';
     $params['disable_notification'] = TRUE;
