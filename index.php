@@ -30,7 +30,9 @@
   }
 
   if (($text == "/info") and ($wasStart)) {
-    $request = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$apikey.'';
+    $request = file_get_contents('https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$apikey.'');
+    $request = json_decode($request, true);
+ 
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
     $reply = $request;
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
