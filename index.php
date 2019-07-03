@@ -8,7 +8,7 @@
   $chat_id = $result["message"]["chat"]["id"]; 
   $name = $result["message"]["from"]["username"]; 
   $wasStart = FALSE;
-  $apikey = "2ef74c382ac90947f76e48a4cb24fca2";
+  $apikey = '2ef74c382ac90947f76e48a4cb24fca2';
   $city = 'moscow';
   $country_name = 'canada';
   $keyboard = [["Да"], ["Нет"]];
