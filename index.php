@@ -49,6 +49,19 @@
     $reply = $request["main"]["temp"];
     echo($reply);
 
+  if ($text == "/fo") {
+  	$params['text'] = 'Выберите язык....';
+    $params['disable_notification'] = TRUE;
+    $params['parse_mode'] = 'HTML';
+
+    $button_en = array('text' => 'English', 'callback_data' => '/lang_english');
+    $button_ru = array('text' => 'Русский', 'callback_data' => '/lang_russian');
+        
+    $keyboard = array('inline_keyboard' => array(array($button_en, $button_ru)));
+    $params['reply_markup'] = json_encode($keyboard, TRUE);
+    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $city, 'reply_markup' => $reply_markup ]);
+  }
+
 
   /*  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);*/
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply/*, 'reply_markup' => $reply_markup*/ ]);
