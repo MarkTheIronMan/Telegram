@@ -8,13 +8,14 @@
   $result = $telegram -> getWebhookUpdates(); 
   $text = $result["message"]["text"];
   $chat_id = $result["message"]["chat"]["id"]; 
+  $arg = 'london';
   $name = $result["message"]["from"]["username"]; 
   $wasStart = FALSE;
   $apikey = '2ef74c382ac90947f76e48a4cb24fca2';
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='. $city_name .'&appid='.$apikey.'';
  
-   function printInfo($arg = STRING):string {
+   function printInfo($arg):string {
    	   $url = 'https://api.openweathermap.org/data/2.5/weather?q='. $arg .'&appid='.$apikey.'';
        $ch = curl_init($url);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
