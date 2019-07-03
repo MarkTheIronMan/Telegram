@@ -68,7 +68,7 @@
     $response = "temperature is about". $reply. 'K';
     echo($reply);
   /*  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);*/
-    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply/*, 'reply_markup' => $reply_markup*/ ]);
+    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response/*, 'reply_markup' => $reply_markup*/ ]);
   } 
 /*
   if ($text == "/nw") {
