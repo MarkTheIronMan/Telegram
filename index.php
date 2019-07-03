@@ -46,7 +46,7 @@
     $r = curl_exec($ch);
     curl_close($ch);
     $request = json_decode($r, true);
-    $reply = $request->"main"->"temp";
+    $reply = $request["main"]["temp"];
     echo($reply);
 
 
