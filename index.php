@@ -65,7 +65,7 @@
     $params['reply_markup'] = json_encode($keyboard, TRUE);
     $telegram->sendMessage($params);
 
-    if ($button_en['callback_data'] == "/newCity") {
+    if ($button_en['callback_data'] == "newCity") {
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города']);
     }
   }
