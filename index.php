@@ -22,6 +22,7 @@
        curl_close($ch);
        $request = json_decode($r, true);
        $nme = $request["name"];
+       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $nme]);
        $tmp = $request["main"]["temp"];
     /*   $temp = round($temp - 273.15); */
        $wnd = $request["wind"]["speed"];
