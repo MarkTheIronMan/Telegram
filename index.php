@@ -72,7 +72,8 @@
   	$reply = RESP;
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
   	$city = 'london';
-  	  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => printInfo($city) ]); 	
+  	$va = printInfo($city);
+  	  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $va ]); 	
   } 
 
 
