@@ -9,10 +9,10 @@
   $name = $result["message"]["from"]["username"]; 
   $wasStart = FALSE;
   $apikey = "2ef74c382ac90947f76e48a4cb24fca2";
-  $city = "moscow";
-  $country_name = "canada";
+  $city = 'moscow';
+  $country_name = 'canada';
   $keyboard = [["Да"], ["Нет"]];
-  $url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apikey";
+  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city.'&appid='.$apikey'';
 
   if (($text == "/start") and ($wasStart == false)) {
   	$wasStart = TRUE;
@@ -41,9 +41,14 @@
   } */
 
   if ($text == "/info") {
-    $request = file_get_contents($url);
+  	$ch = curl_init($url);
+  	curl_setopt($ch, CURLOPT_URL, $url);
+    $request = curl_exec($ch);
+
+  /*  $request = file_get_contents($url); */
     $request = json_decode($request, true);
     $reply = $request->main->temp;
+    curl_close($ch);
     echo($reply);
 
 
