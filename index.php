@@ -54,11 +54,7 @@
     }
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
   }
-  /*
-  if ($text == "/more") {
-  	$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
-    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $city, 'reply_markup' => $reply_markup ]);
-  } */
+  
 
   if ($text == "/info") {
   	$ch = curl_init($url);
@@ -88,13 +84,19 @@
 
   if ($text == "/fo") {
   	 $reply = "Добро пожаловать в бота!";
-  	 $reply_markup = Keyboard::make()
-    ->inline()
-    ->row(
-        Keyboard::inlineButton(['text' => 'Btn 1', 'callback_data' => 'data']),
-        Keyboard::inlineButton(['text' => 'Btn 2', 'callback_data' => 'data_from_btn2'])
-    );
-     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
+  	$keyboard = [
+            'keyboard'=>[
+                [['text'=>'Кнопка 1'],['text'=>'Кнопка 2']] // Первый ряд кнопок
+                ,['Простая кнопка',['text'=>'Кнопка 4']] // Второй ряд кнопок
+                ]
+            ];
+$post_fields = [
+            'chat_id'    => 12121211,
+            'text'       => 'бла бла бла текст',
+            'reply_markup' =>Json::encode($keyboard)
+        ];
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
+  /*   $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);*/
   }
 
   
