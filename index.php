@@ -103,9 +103,9 @@
 
     switch($data) {
     case 'checkCities':
-    $telegram->sendMessage($chat_id_in, "old");
+    $telegram->sendMessage(['chat_id' => $chat_id, 'text' =>"old"]);
     case 'newCity':
-    $telegram->sendMessage($chat_id_in, "new");
+    $telegram->sendMessage(['chat_id' => $chat_id, 'text' =>"new"]);
     break;
     }
   }
