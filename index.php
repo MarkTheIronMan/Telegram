@@ -11,10 +11,9 @@
   $name = $result["message"]["from"]["username"]; 
   $wasStart = FALSE;
   $apikey = '2ef74c382ac90947f76e48a4cb24fca2';
-  $city = 'moscow';
   $country_name = 'canada';
   $keyboard = [["Да"], ["Нет"]];
-  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city.'&appid='.$apikey.'';
+ 
 
   if (($text == "/start") and ($wasStart == false)) {
   	$wasStart = TRUE;
@@ -54,6 +53,15 @@
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply/*, 'reply_markup' => $reply_markup*/ ]);
   } 
 
+  if ($text == "/new") {
+  	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => RESP]);
+  	
+  /*  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);*/
+    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply/*, 'reply_markup' => $reply_markup*/ ]);
+  } 
+
+
+/*
   if ($text == "/fo") {
   	$params['text'] = 'Выберите операцию';
     $params['disable_notification'] = TRUE;
@@ -64,7 +72,7 @@
     $button_ru = array('text' => 'Новый город', 'callback_data' => "newCity");
         
     $keyboard = array('inline_keyboard' => array(array($button_en, $button_ru)));
-    $params['reply_markup'] =/*json_encode($keyboard, TRUE); */ $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true, json_encode($keyboard, TRUE) ]);
+    $params['reply_markup'] =json_encode($keyboard, TRUE);  
     $telegram->sendMessage($params);
 
     if ($button_en['callback_data'] == "newCity") {
@@ -72,7 +80,23 @@
 
     }
   }
-
+*/
+  function printInfo($city):string {
+  	 if ($text != "/new") {
+       $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city.'&appid='.$apikey.'';
+       $ch = curl_init($url);
+       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+       $r = curl_exec($ch);
+       curl_close($ch);
+       $request = json_decode($r, true);
+       $name =$request["name"];
+       $temp =$request["main"]["temp"];
+       $temp = round($temp - 273.15);
+       $wind =$request["wind"]["speed"];
+       $str = "Температура в ".$name." составляет ".$temp." градусов. \nСкорость ветра".$wind." метров в секунду.";
+       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $str]);
+     }
+    }
   
   echo("test");
 ?>
