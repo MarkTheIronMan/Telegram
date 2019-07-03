@@ -1,6 +1,8 @@
 <?php
   include('vendor/autoload.php'); 
   use Telegram\Bot\Api; 
+
+  const RESP = "Введите название города";
  
   $telegram = new Api('698149481:AAFNPsmhDJ2a_dzbVFjiiGCc3TgpGft-0Xk');
   $result = $telegram -> getWebhookUpdates(); 
@@ -62,11 +64,12 @@
     $button_ru = array('text' => 'Новый город', 'callback_data' => "newCity");
         
     $keyboard = array('inline_keyboard' => array(array($button_en, $button_ru)));
-    $params['reply_markup'] = json_encode($keyboard, TRUE);
+    $params['reply_markup'] =/*json_encode($keyboard, TRUE); */ $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
     $telegram->sendMessage($params);
 
     if ($button_en['callback_data'] == "newCity") {
-      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города']);
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => RESP]);
+
     }
   }
 
