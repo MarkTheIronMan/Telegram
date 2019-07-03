@@ -79,7 +79,7 @@
   	  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $va ]); 	
   } 
 
-
+*/
 
   if ($text == "/fo") {
   	$params['text'] = 'Выберите операцию';
@@ -99,7 +99,7 @@
 
     }
   }
-*/
+
 
   
   echo("test");
