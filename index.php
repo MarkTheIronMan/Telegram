@@ -72,9 +72,9 @@
   } 
 
   if ($text == "/nw") {
-  	$reply = RESP;
+  /*	$reply = RESP;
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
-  	$city = 'london';
+  	$city = 'london';   */
   	$va = getInfo($city);
   	  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $va ]); 	
   } 
