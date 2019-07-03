@@ -15,6 +15,7 @@
   $wasStart = FALSE;
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.apikey.'';
+  $mark = FALSE;
  
 
    function getInfo($arg): string {
@@ -74,11 +75,14 @@
 
   if ($text == "/nw") {
   	$reply = RESP;
+  	$mark = TRUE;
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
-  	if ($text != "/nw") {
+  }
+  if (($text != "/nw") AND ($mark)) {
    	  $city = $text;   
   	  $va = getInfo($city);
   	  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $va ]);
+  	  $mark = FALSE;
   	} 	
   } 
 
