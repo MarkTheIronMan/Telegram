@@ -13,7 +13,7 @@
   $apikey = '2ef74c382ac90947f76e48a4cb24fca2';
   $city_name = 'moscow';
   $keyboard = [["Да"], ["Нет"]];
-  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$cityname.'&appid='.$apikey.'';
+  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$apikey.'';
  
    function printInfo($a) {
    	   $curl = 'https://api.openweathermap.org/data/2.5/weather?q='.$a.'&appid='.$apikey.'';
