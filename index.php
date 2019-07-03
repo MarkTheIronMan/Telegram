@@ -78,12 +78,11 @@
   	$mark = TRUE;
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
   }
-  if (($text != "/nw") AND ($mark)) {
+  if (($text != "/nw") and ($mark)) {
    	  $city = $text;   
   	  $va = getInfo($city);
   	  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $va ]);
-  	  $mark = FALSE;
-  	} 	
+  	  $mark = FALSE;	
   } 
 
 
