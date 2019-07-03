@@ -15,7 +15,6 @@
   $keyboard = [["Да"], ["Нет"]];
  
    function printInfo($city) {
-  	 if ($text != "/new") {
        $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city.'&appid='.$apikey.'';
        $ch = curl_init($url);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -28,7 +27,6 @@
        $wind =$request["wind"]["speed"];
        $str = "Температура в ".$name." составляет ".$temp." градусов. \nСкорость ветра".$wind." метров в секунду.";
        $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $str]);
-     }
     }
 
   if (($text == "/start") and ($wasStart == false)) {
@@ -71,7 +69,9 @@
 
   if ($text == "/new") {
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => RESP]);
-  	printInfo($text);
+  	if ($text != "/new") {
+  	  printInfo($text);
+  	}
   } 
 
 
