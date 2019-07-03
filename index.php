@@ -17,8 +17,8 @@
  
 
    function getInfo($arg):string {
-   	   $url = 'https://api.openweathermap.org/data/2.5/weather?q='. $arg .'&appid='.$apikey.'';
-       $ch = curl_init($url);
+   	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q='{$arg}'&appid='{$apikey}'';
+       $ch = curl_init($newurl);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
        $r = curl_exec($ch);
        curl_close($ch);
