@@ -83,6 +83,7 @@
 */
   function printInfo($city):string {
   	 if ($text != "/new") {
+  	   $city = $text;
        $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city.'&appid='.$apikey.'';
        $ch = curl_init($url);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
