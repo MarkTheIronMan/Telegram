@@ -44,9 +44,9 @@
   	$ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $r = curl_exec($ch);
-    $request = json_decode($r, true);
-    $reply = $request->main->temp;
     curl_close($ch);
+    $request = json_decode($r, true);
+    $reply = $request->"main"->"temp";
     echo($reply);
 
 
