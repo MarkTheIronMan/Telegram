@@ -11,7 +11,6 @@
   $result = $telegram -> getWebhookUpdates(); 
   $text = $result["message"]["text"];
   $chat_id = $result["message"]["chat"]["id"]; 
-  $arg = 'london';
   $name = $result["message"]["from"]["username"]; 
   $wasStart = FALSE;
   $city_name = 'moscow';
@@ -72,7 +71,6 @@
     $reply = $request["main"]["temp"];
     $response = "temperature in Moscow is about ". $reply. 'K';
     echo($reply);
-  /*  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);*/
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response/*, 'reply_markup' => $reply_markup*/ ]);
   } 
 
@@ -92,7 +90,7 @@
 
   if ($text == "/fo") {
   	 $reply = "Добро пожаловать в бота!";
-  	 $keyboard = Keyboard::make()
+  	 $reply_markup = Keyboard::make()
     ->inline()
     ->row(
         Keyboard::inlineButton(['text' => 'Btn 1', 'callback_data' => 'data']),
