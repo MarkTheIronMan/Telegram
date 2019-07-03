@@ -55,9 +55,7 @@
 
   if ($text == "/new") {
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => RESP]);
-  	
-  /*  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);*/
-    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply/*, 'reply_markup' => $reply_markup*/ ]);
+  	printInfo($text);
   } 
 
 
@@ -81,9 +79,8 @@
     }
   }
 */
-  function printInfo($city):string {
+  function printInfo($city) {
   	 if ($text != "/new") {
-  	   $city = $text;
        $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city.'&appid='.$apikey.'';
        $ch = curl_init($url);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
