@@ -89,25 +89,10 @@
 
 
   if ($text == "/fo") {
-  	$params['text'] = 'Выберите операцию';
-    $params['disable_notification'] = TRUE;
-    $params['parse_mode'] = 'HTML';
-    $params['chat_id'] = $result["message"]["chat"]["id"];
-
-    $button_one = array('text' => 'Последние города', 'callback_data' => "checkCities");
-    $button_two = array('text' => 'Новый город', 'callback_data' => "newCity");
-        
-    $keyboard = array('inline_keyboard' => array(array($button_one, $button_two)));
-    $params['reply_markup'] =json_encode($keyboard, TRUE);  
-    $telegram->sendMessage($params);
-
-    switch($data) {
-    case 'checkCities':
-    $telegram->sendMessage(['chat_id' => $chat_id, 'text' =>"old"]);
-    case 'newCity':
-    $telegram->sendMessage(['chat_id' => $chat_id, 'text' =>"new"]);
-    break;
-    }
+  	 $keyboard = [["Предыдущи запросы"], ["Новый город"]];
+  	 $reply = "Добро пожаловать в бота!";
+     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
   }
 
   
