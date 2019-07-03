@@ -91,7 +91,11 @@
 
   if ($text == "/fo") {
   	 $reply = "Добро пожаловать в бота!";
-     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
+  	 $inline_button1 = array("text"=>"Предыдущие запросы");
+     $inline_button2 = array("text"=>"Новый запрос");
+     $inline_keyboard = [[$inline_button1,$inline_button2]];
+  	 $keyboard = array("keyboard"=>$inline_keyboard, 'one_time_keyboard' => true, 'resize_keyboard' => true);
+     $replyMarkup = json_encode($keyboard);
      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
   }
 
