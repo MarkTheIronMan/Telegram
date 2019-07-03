@@ -14,7 +14,7 @@
   $keyboard = [["Да"], ["Нет"]];
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$apikey.'';
 
-  if (($text == "/sayHello") and ($wasStart == false)) {
+  if (($text == "/start") and ($wasStart == false)) {
   	$wasStart = TRUE;
   	if ($name) {
       $reply = "Здравствуй, " .$name;
@@ -22,13 +22,23 @@
     else {
       $reply = "Здравствуй, Cтранник";
     }
+    $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
   }
-  $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
 
+  if ($text == "/sayHello") {
+  	if ($name) {
+      $reply = "Здравствуй, " .$name;
+    }
+    else {
+      $reply = "Здравствуй, Cтранник";
+    }
+    $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
+  }
+  /*
   if ($text == "/more") {
   	$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $city, 'reply_markup' => $reply_markup ]);
-  }
+  } */
 
   if (($text == "/info") and ($wasStart)) {
     $request = file_get_contents($url);
@@ -36,7 +46,7 @@
     $reply = $request -> main -> temp;
 
   /*  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);*/
-    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply/*, 'reply_markup' => $reply_markup ]*/);
+    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply/*, 'reply_markup' => $reply_markup*/ ]);
   } 
 
 
