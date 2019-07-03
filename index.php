@@ -84,19 +84,9 @@
 
   if ($text == "/fo") {
   	 $reply = "Добро пожаловать в бота!";
-  	$keyboard = [
-            'keyboard'=>[
-                [['text'=>'Кнопка 1'],['text'=>'Кнопка 2']] // Первый ряд кнопок
-                ,['Простая кнопка',['text'=>'Кнопка 4']] // Второй ряд кнопок
-                ]
-            ];
-$post_fields = [
-            'chat_id'    => 12121211,
-            'text'       => 'бла бла бла текст',
-            'reply_markup' =>Json::encode($keyboard)
-        ];
-curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
-  /*   $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);*/
+  	 $keyboard = [["odin"],["dva"]];
+  	 $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
+     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
   }
 
   
