@@ -42,10 +42,9 @@
 
   if ($text == "/info") {
   	$ch = curl_init($url);
-  	curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $r = curl_exec($ch);
-    $request = json_decode($request, true);
+    $request = json_decode($r, true);
     $reply = $request->main->temp;
     curl_close($ch);
     echo($reply);
