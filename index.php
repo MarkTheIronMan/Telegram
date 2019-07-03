@@ -14,6 +14,7 @@
   $city_name = 'moscow';
   $keyboard = [["Да"], ["Нет"]];
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$apikey.'';
+  $a;
  
    function printInfo($a) {
    	   $curl = 'https://api.openweathermap.org/data/2.5/weather?q='.$a.'&appid='.$apikey.'';
@@ -26,7 +27,7 @@
        $tmp = $request["main"]["temp"];
     /*   $temp = round($temp - 273.15); */
        $wnd = $request["wind"]["speed"];
-       $str = "Температура в ".$nme." составляет ".$tmp." градусов.\n Скорость ветра".$wnd." метров в секунду.";
+       $str = 'Температура в '.$nme.' составляет '.$tmp.' градусов. Скорость ветра'.$wnd.' метров в секунду.';
        $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $str ]);
     }
 
