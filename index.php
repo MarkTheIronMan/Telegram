@@ -3,6 +3,8 @@
   use Telegram\Bot\Api; 
 
   const RESP = "Введите название города";
+  const apikey = '2ef74c382ac90947f76e48a4cb24fca2';
+
  
   $telegram = new Api('698149481:AAFNPsmhDJ2a_dzbVFjiiGCc3TgpGft-0Xk');
   $result = $telegram -> getWebhookUpdates(); 
@@ -11,23 +13,22 @@
   $arg = 'london';
   $name = $result["message"]["from"]["username"]; 
   $wasStart = FALSE;
-  $apikey = '2ef74c382ac90947f76e48a4cb24fca2';
   $city_name = 'moscow';
-  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$apikey.'';
+  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.apikey.'';
  
 
-   function getInfo($arg):string {
-   	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q='.$arg.'&appid='.$apikey.'';
+   function getInfo($arg): string {
+   	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q='.$arg.'&appid='.apikey.'';
        $ch = curl_init($newurl);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
        $r = curl_exec($ch);
        curl_close($ch);
        $request = json_decode($r, true);
-       $nme = $request["name"];
-       $tmp = $request["main"]["temp"];
-    /*   $temp = round($temp - 273.15); */
-       $wnd = $request["wind"]["speed"];
-       $str = 'Температура в '.$nme.' составляет '.$tmp.' градусов. Скорость ветра'.$wnd.' метров в секунду.';
+       $name = $request["name"];
+       $temp = $request["main"]["temp"];
+    /* $temp = round($temp - 273.15); */
+       $wind = $request["wind"]["speed"];
+       $str = 'Температура в '.$name.' составляет '.$temp.' градусов. Скорость ветра '.$wind.' метров в секунду.';
        return $str;
     }
 
