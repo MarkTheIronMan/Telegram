@@ -68,11 +68,10 @@
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply/*, 'reply_markup' => $reply_markup*/ ]);
   } 
 
-  if ($text == "/new") {
+  if ($text == "/nw") {
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => RESP]);
   	$city = 'london';
-  	  printInfo($city);
-  	
+  	  printInfo($city); 	
   } 
 
 
