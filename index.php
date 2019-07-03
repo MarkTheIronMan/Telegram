@@ -12,10 +12,10 @@
   $wasStart = FALSE;
   $apikey = '2ef74c382ac90947f76e48a4cb24fca2';
   $city_name = 'moscow';
-  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$apikey.'';
+  $url = 'https://api.openweathermap.org/data/2.5/weather?q='. $city_name .'&appid='.$apikey.'';
  
    function printInfo($vvv):string {
-   	   $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$vvv.'&appid='.$apikey.'';
+   	   $url = 'https://api.openweathermap.org/data/2.5/weather?q='. $vvv .'&appid='.$apikey.'';
        $ch = curl_init($url);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
        $r = curl_exec($ch);
@@ -25,7 +25,7 @@
        $tmp = $request["main"]["temp"];
     /*   $temp = round($temp - 273.15); */
        $wnd = $request["wind"]["speed"];
-       $str = 'Температура в '.$nme.' составляет '.$tmp.' градусов. Скорость ветра'.$wnd.' метров в секунду.';
+       $str = 'Температура в '. $nme .' составляет '. $tmp .' градусов. Скорость ветра'. $wnd .' метров в секунду.';
        return $str;
     }
 
