@@ -8,11 +8,11 @@
   $chat_id = $result["message"]["chat"]["id"]; 
   $name = $result["message"]["from"]["username"]; 
   $wasStart = FALSE;
-  $apikey = '2ef74c382ac90947f76e48a4cb24fca2';
-  $city_name = 'moscow';
+  $apikey = "2ef74c382ac90947f76e48a4cb24fca2";
+  $city = "moscow";
   $country_name = "canada";
   $keyboard = [["Да"], ["Нет"]];
-  $url = "https://api.openweathermap.org/data/2.5/weather?q=$city_name&appid=$apikey";
+  $url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apikey";
 
   if (($text == "/start") and ($wasStart == false)) {
   	$wasStart = TRUE;
