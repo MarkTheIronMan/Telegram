@@ -66,7 +66,7 @@
     $telegram->sendMessage($params);
 
     if ($text == "/newCity") {
-      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города');
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города']);
     }
   }
 
