@@ -67,7 +67,7 @@
     curl_close($ch);
     $request = json_decode($r, true);
     $reply = $request["main"]["temp"];
-    $response = "temperature is about ". $reply. 'K';
+    $response = "temperature in Moscow is about ". $reply. 'K';
     echo($reply);
   /*  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);*/
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response/*, 'reply_markup' => $reply_markup*/ ]);
@@ -78,12 +78,12 @@
   	$mark = TRUE;
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
   }
-  if (($text != "/nw") and ($mark)) {
+/*  if (($text != "/nw") and ($mark)) {
    	  $city = $text;   
   	  $va = getInfo($city);
   	  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $va ]);
   	  $mark = FALSE;	
-  } 
+  }  */
 
 
 
@@ -100,7 +100,7 @@
     $params['reply_markup'] =json_encode($keyboard, TRUE);  
     $telegram->sendMessage($params);
 
-    if ($button_en['callback_data'] == "newCity") {
+    if ($button_ru['callback_data'] == "newCity") {
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => RESP]);
 
     }
