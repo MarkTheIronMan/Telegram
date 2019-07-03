@@ -15,9 +15,9 @@
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='. $city_name .'&appid='.$apikey.'';
  
-   function printInfo($arg):string {
-   	   $m = $arg;
-   	   $url = 'https://api.openweathermap.org/data/2.5/weather?q='. $m .'&appid='.$apikey.'';
+
+   function getInfo($arg):string {
+   	   $url = 'https://api.openweathermap.org/data/2.5/weather?q='. $arg .'&appid='.$apikey.'';
        $ch = curl_init($url);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
        $r = curl_exec($ch);
@@ -70,16 +70,16 @@
   /*  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);*/
     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response/*, 'reply_markup' => $reply_markup*/ ]);
   } 
-/*
+
   if ($text == "/nw") {
   	$reply = RESP;
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
   	$city = 'london';
-  	$va = printInfo($city);
+  	$va = getInfo($city);
   	  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $va ]); 	
   } 
 
-*/
+
 
   if ($text == "/fo") {
   	$params['text'] = 'Выберите операцию';
