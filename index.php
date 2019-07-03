@@ -16,7 +16,8 @@
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='. $city_name .'&appid='.$apikey.'';
  
    function printInfo($arg):string {
-   	   $url = 'https://api.openweathermap.org/data/2.5/weather?q='. $arg .'&appid='.$apikey.'';
+   	   $m = $arg;
+   	   $url = 'https://api.openweathermap.org/data/2.5/weather?q='. $m .'&appid='.$apikey.'';
        $ch = curl_init($url);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
        $r = curl_exec($ch);
