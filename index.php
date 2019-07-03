@@ -64,7 +64,7 @@
     $button_ru = array('text' => 'Новый город', 'callback_data' => "newCity");
         
     $keyboard = array('inline_keyboard' => array(array($button_en, $button_ru)));
-    $params['reply_markup'] =/*json_encode($keyboard, TRUE); */ $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true, jsoc_encode()$keyboard, TRUE ]);
+    $params['reply_markup'] =/*json_encode($keyboard, TRUE); */ $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true, json_encode($keyboard, TRUE) ]);
     $telegram->sendMessage($params);
 
     if ($button_en['callback_data'] == "newCity") {
