@@ -1,6 +1,7 @@
 <?php
   include('vendor/autoload.php'); 
   use Telegram\Bot\Api; 
+  use Telegram\Bot\Keyboard\Keyboard;
 
   const RESP = "Введите название города";
   const apikey = '2ef74c382ac90947f76e48a4cb24fca2';
@@ -17,7 +18,7 @@
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.apikey.'';
   $mark = FALSE;
   $data = $callback_query['data'];
-  $keyboard = [["Предыдущие запросы"],["Новый город"]];
+  
  
 
    function getInfo($arg): string {
@@ -91,7 +92,12 @@
 
   if ($text == "/fo") {
   	 $reply = "Добро пожаловать в бота!";
-  	 $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
+  	 $keyboard = Keyboard::make()
+    ->inline()
+    ->row(
+        Keyboard::inlineButton(['text' => 'Btn 1', 'callback_data' => 'data']),
+        Keyboard::inlineButton(['text' => 'Btn 2', 'callback_data' => 'data_from_btn2'])
+    );
      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
   }
 
