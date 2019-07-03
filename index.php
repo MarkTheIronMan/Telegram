@@ -56,6 +56,7 @@
   	$params['text'] = 'Выберите язык....';
     $params['disable_notification'] = TRUE;
     $params['parse_mode'] = 'HTML';
+    $params['chat_id'] = $result["message"]["chat"]["id"];
 
     $button_en = array('text' => 'English', 'callback_data' => '/lang_english');
     $button_ru = array('text' => 'Русский', 'callback_data' => '/lang_russian');
