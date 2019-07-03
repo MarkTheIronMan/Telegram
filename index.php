@@ -14,6 +14,22 @@
   $country_name = 'canada';
   $keyboard = [["Да"], ["Нет"]];
  
+   function printInfo($city) {
+  	 if ($text != "/new") {
+       $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city.'&appid='.$apikey.'';
+       $ch = curl_init($url);
+       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+       $r = curl_exec($ch);
+       curl_close($ch);
+       $request = json_decode($r, true);
+       $name =$request["name"];
+       $temp =$request["main"]["temp"];
+       $temp = round($temp - 273.15);
+       $wind =$request["wind"]["speed"];
+       $str = "Температура в ".$name." составляет ".$temp." градусов. \nСкорость ветра".$wind." метров в секунду.";
+       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $str]);
+     }
+    }
 
   if (($text == "/start") and ($wasStart == false)) {
   	$wasStart = TRUE;
@@ -79,22 +95,7 @@
     }
   }
 */
-  function printInfo($city) {
-  	 if ($text != "/new") {
-       $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city.'&appid='.$apikey.'';
-       $ch = curl_init($url);
-       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-       $r = curl_exec($ch);
-       curl_close($ch);
-       $request = json_decode($r, true);
-       $name =$request["name"];
-       $temp =$request["main"]["temp"];
-       $temp = round($temp - 273.15);
-       $wind =$request["wind"]["speed"];
-       $str = "Температура в ".$name." составляет ".$temp." градусов. \nСкорость ветра".$wind." метров в секунду.";
-       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $str]);
-     }
-    }
+
   
   echo("test");
 ?>
