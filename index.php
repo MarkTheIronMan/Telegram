@@ -16,8 +16,6 @@
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.apikey.'';
   $mark = FALSE;
-  $data = $callback_query['data'];
-  
  
 
    function getInfo($arg): string {
