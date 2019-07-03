@@ -17,6 +17,7 @@
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.apikey.'';
   $mark = FALSE;
   $data = $callback_query['data'];
+  $keyboard = [["Предыдущие запросы"],["Новый город"]];
  
 
    function getInfo($arg): string {
@@ -89,7 +90,6 @@
 
 
   if ($text == "/fo") {
-  	 $keyboard = [["Предыдущие запросы"], ["Новый город"]];
   	 $reply = "Добро пожаловать в бота!";
      $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
