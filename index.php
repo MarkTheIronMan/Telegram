@@ -69,9 +69,9 @@
 
   if ($text == "/new") {
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => RESP]);
-  	if ($text != "/new") {
-  	  printInfo('london');
-  	}
+  	$city = 'london';
+  	  printInfo($city);
+  	
   } 
 
 
