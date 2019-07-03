@@ -11,12 +11,13 @@
   $name = $result["message"]["from"]["username"]; 
   $wasStart = FALSE;
   $apikey = '2ef74c382ac90947f76e48a4cb24fca2';
-  $country_name = 'canada';
+  $city_name = 'moscow';
   $keyboard = [["Да"], ["Нет"]];
+  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$cityname.'&appid='.$apikey.'';
  
    function printInfo($a) {
-       $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$a.'&appid='.$apikey.'';
-       $ch = curl_init($url);
+   	   $curl = 'https://api.openweathermap.org/data/2.5/weather?q='.$a.'&appid='.$apikey.'';
+       $ch = curl_init($curl);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
        $r = curl_exec($ch);
        curl_close($ch);
