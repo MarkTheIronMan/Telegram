@@ -62,7 +62,7 @@
         
     $keyboard = array('inline_keyboard' => array(array($button_en, $button_ru)));
     $params['reply_markup'] = json_encode($keyboard, TRUE);
-    $this->tlgrm->sendMessage($params);
+    $telegram->sendMessage($params);
   }
 
   
