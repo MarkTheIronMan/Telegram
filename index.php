@@ -23,7 +23,7 @@
        $request = json_decode($r, true);
        $name =$request["name"];
        $temp =$request["main"]["temp"];
-       $temp = round($temp - 273.15);
+    /*   $temp = round($temp - 273.15); */
        $wind =$request["wind"]["speed"];
        $str = "Температура в ".$name." составляет ".$temp." градусов. \nСкорость ветра".$wind." метров в секунду.";
        $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $str]);
@@ -70,7 +70,7 @@
   if ($text == "/new") {
   	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => RESP]);
   	if ($text != "/new") {
-  	  printInfo($text);
+  	  printInfo('london');
   	}
   } 
 
