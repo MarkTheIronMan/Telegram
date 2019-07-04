@@ -14,7 +14,7 @@
   $name = $result["message"]["from"]["username"]; 
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.apikey.'';
-  $mark = FALSE;
+  $isNewSearch = FALSE;
  
 
    function getInfo($arg): string {
@@ -80,8 +80,7 @@
       $isNewSearch = TRUE;
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => 'Введите название города']);
     }
-    elseif (($isNewSearch) and ($text)) {
-       $isNewSearch = false;
+    else{
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => getInfo($text)]);
     } 
   }
