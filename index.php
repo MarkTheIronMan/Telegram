@@ -101,7 +101,7 @@
       $data = [
       	"city" => ($text)
       ]; 
-      $m = data["city"];
+      $m = $data["city"];
       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $m]);
     }
   }
