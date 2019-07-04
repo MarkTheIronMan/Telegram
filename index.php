@@ -12,9 +12,8 @@
   $name = $result["message"]["from"]["username"]; 
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . $city_name .'&appid=' . myapikey . ''; 
-  $mem = STRING;
 
-   function getInfo($arg): string {
+   function getInfo($arg) {
    	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q=' . $arg .'&appid=' . myapikey . '';
        $ch = curl_init($newurl);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
