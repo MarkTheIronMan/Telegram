@@ -44,7 +44,7 @@
    
 
   if ($text) { 	
-  	$m = $text{0};
+  	$m = $text[0];
   	if ($m == "5") {
   	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => 'ну ты и пидор']);
   	} 
