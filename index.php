@@ -79,26 +79,25 @@
   	  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $va ]);
   	  $mark = FALSE;	
   }  */
-
-
-
   if ($text == "/погода") {
+  	 $isNewDialog = true;
   	 $reply = "Окей, я могу рассказать тебе про погоду";
   	 $keyboard = [["Увидеть последние запросы"],["Новый город"]];
   	 $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
-     if ("$text" == "Увидеть последние запросы") {
-     	$telegram->sendMessage([ 'chat_id' => $chat_id, "Как скажешь, мой повелитель"]);
-     }
-     elseif ("$text" == "Новый город") {
-     	$isNewSearch = TRUE;
-     	$telegram->sendMessage([ 'chat_id' => $chat_id, "Введите название города"]);
-     }
-     if (($isNewSearch) and ($text)) {
-     	$isNewSearch = false;
-        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => getInfo($text)]);
-     }
   }
+  if (("$text" == "Увидеть последние запросы") and ($isNewDialog)) {
+     $telegram->sendMessage([ 'chat_id' => $chat_id, "Как скажешь, мой повелитель"]);
+  }
+  if (("$text" == "Новый город") and ($isNewDialog)) {
+     $isNewSearch = TRUE;
+     $telegram->sendMessage([ 'chat_id' => $chat_id, "Введите название города"]);
+  }
+  if (($isNewSearch) and ($text)) {
+     $isNewSearch = false;
+     $telegram->sendMassage(['chat_id' => $chat_id, 'text' => getInfo($text)]);
+  }
+  
 
   
   echo("test");
