@@ -32,7 +32,7 @@
 
   if (substr($text, 0, 1) === '!') {
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => 'ну ты и пидор']);
-    /*   $city = (ltrim($text, '!'));  */
+       $city = 'москва';/* (ltrim($text, '!'));  */
        $reply = getInfo($city);
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
    }
@@ -84,7 +84,7 @@
     }
     elseif (substr($text, 0, 1) === '!') {
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => 'ну ты и пидор']);
-   /*    $city = (ltrim($text, '!'));   */
+       $city = (ltrim($text, '!'));   
        $reply = getInfo($city);
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
     } 
