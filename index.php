@@ -74,7 +74,7 @@
     elseif ((substr($text, 0, 1) === '!')) {
        $city = (ltrim($text, '!'));
        $reply = getInfo($city);
-       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $text]);
+       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
     } 
   }
 
