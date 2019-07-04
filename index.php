@@ -71,19 +71,19 @@
   	  $reply = "Окей, я могу рассказать тебе про погоду";
   	  $keyboard = [["Увидеть последние запросы"],["Новый город"]];
   	  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true]);
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
     }
     elseif ($text == "Увидеть последние запросы") {
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => 'Как скажешь, мой повелитель']);
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Как скажешь, мой повелитель']);
     }
     elseif ($text == "Новый город") {
       $isNewSearch = TRUE;
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => 'Введите название города']);
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города']);
     }
     elseif ($text) {
        $city = $text;
        $reply = getInfo($city);
-       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $reply]);
+       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $text]);
     } 
   }
 
