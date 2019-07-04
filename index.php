@@ -1,6 +1,9 @@
 <?php
   include('vendor/autoload.php'); 
   use Telegram\Bot\Api; 
+  use Telegram\Bot\Commands\Command;
+  use Telegram\Bot\Keyboard\Keyboard;
+
 
   const RESP = "Введите название города";
   const myapikey = '2ef74c382ac90947f76e48a4cb24fca2';
