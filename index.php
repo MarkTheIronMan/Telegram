@@ -11,22 +11,27 @@
   $chat_id = $result["message"]["chat"]["id"]; 
   $name = $result["message"]["from"]["username"]; 
   $city_name = 'moscow';
-  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.myapikey.''; 
+  $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . $city_name .'&appid=' . myapikey . ''; 
 
    function getInfo($arg): string {
-   	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q='.$arg.'&appid='.myapikey.'';
+   	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q=' . $arg .'&appid=' . myapikey . '';
        $ch = curl_init($newurl);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
        $r = curl_exec($ch);
        curl_close($ch);
        $request = json_decode($r, true);
-       $nameCity = $request["name"];
-       $tempCity = $request["main"]["temp"];
-       $tempCels = /*0 +*/ $tempCity;
-      /* $tempCels = round($tempCels - 273.15); */
-       $windCity = $request["wind"]["speed"];
-       $str = 'Температура в '.$nameCity.' составляет '.$tempCels.' градусов Цельсия. Скорость ветра '.$windCity.' метров в секунду.';
-       return $str;
+       if ($request["cod"] == "200") {
+         $nameCity = $request["name"];
+         $tempCity = $request["main"]["temp"];
+         $tempCels = /*0 +*/ $tempCity;
+        /* $tempCels = round($tempCels - 273.15); */
+         $windCity = $request["wind"]["speed"];
+         $str = 'Температура в '.$nameCity.' составляет '.$tempCels.' градусов Цельсия. Скорость ветра '.$windCity.' метров в секунду.';
+         return $str;
+       }
+       else {
+       	 $str = 'Введите корректные данные';
+       }
     }
      
   if ($text) {
