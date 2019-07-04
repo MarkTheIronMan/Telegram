@@ -24,7 +24,7 @@
        $request = json_decode($r, true);
        $nameC = $request["name"];
        $tempC = $request["main"]["temp"];
-       $tempCels = 0 + $temp;
+       $tempCels = 0 + $tempC;
        $tempCels = round($tempCels - 273.15); 
        $windC = $request["wind"]["speed"];
        $str = 'Температура в '.$nameC.' составляет '.$tempCels.' градусов. Скорость ветра '.$windC.' метров в секунду.';
