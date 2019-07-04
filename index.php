@@ -71,8 +71,8 @@
     elseif ($text == "Новый город") {
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города']);
     }
-    else {
-       $city = $text;
+    elseif ((substr($text, 0, 1) == '!')) {
+       $city = trim(ltrim($text));
        $reply = getInfo($city);
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $text]);
     } 
