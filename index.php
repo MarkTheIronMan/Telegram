@@ -31,7 +31,7 @@
        return $str;
     }
 
-  if ($text{0} == '!') {
+  if (substr($text, 0, 1) === '!') {
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => 'ну ты и пидор']);
        $city = (ltrim($text, '!'));
        $reply = getInfo($city);
