@@ -98,7 +98,10 @@
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
   */  } 
     elseif ($text == "/testo") {
-      $m = strval($text);
+      $data = [
+      	"city" => ($text)
+      ]; 
+      $m = data["city"];
       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $m]);
     }
   }
