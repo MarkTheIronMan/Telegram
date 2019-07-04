@@ -70,6 +70,10 @@
       $response = "temperature in ".$nm." is about ". $reply. 'K';
       echo($reply);
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response]);
+      $kek = 'moscow';
+      $lol = getInfo($kek);
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $lol);
+
     } 
     elseif ($text == "/погода") {
   	  $reply = "Окей, я могу рассказать тебе про погоду";
