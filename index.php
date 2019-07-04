@@ -36,6 +36,7 @@
        $city = (ltrim($text, '!'));
        $reply = getInfo($city);
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
+   }
 
   if ($text) { 	
     if ($text == "/start") {
