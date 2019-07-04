@@ -39,7 +39,7 @@
          "city" =>$text
        ];
   	if ($text == "!newyork") { 	
-  	   $k = $text;
+  	   $k = $data["city"];
   	   $k = ltrim($k, "!");
   	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $k]);
   	   $mem = getInfo($k);
