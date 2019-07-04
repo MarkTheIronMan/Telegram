@@ -72,7 +72,7 @@
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response]);
       $kek = 'moscow';
       $lol = getInfo($kek);
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $lol);
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $lol]);
 
     } 
     elseif ($text == "/погода") {
