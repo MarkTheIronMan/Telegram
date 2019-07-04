@@ -26,11 +26,11 @@
          $tempCels = /*0 +*/ $tempCity;
         /* $tempCels = round($tempCels - 273.15); */
          $windCity = $request["wind"]["speed"];
-         $str = 'Температура в '.$nameCity.' составляет '.$tempCels.' градусов Цельсия. Скорость ветра '.$windCity.' метров в секунду.';
+         $str = "Температура в ".$nameCity." составляет ".$tempCels." градусов Цельсия. Скорость ветра ".$windCity." метров в секунду.";
          return $str;
        }
        else {
-       	 $str = 'Введите корректные данные';
+       	 $str = "Введите корректные данные";
        }
     }
      
