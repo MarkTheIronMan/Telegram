@@ -12,6 +12,7 @@
   $name = $result["message"]["from"]["username"]; 
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . $city_name .'&appid=' . myapikey . ''; 
+  $mem = STRING;
 
    function getInfo($arg): string {
    	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q=' . $arg .'&appid=' . myapikey . '';
@@ -38,8 +39,8 @@
   	if ($text == 'newyork') { 	
   	   $k = $text;
   	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $k]);
-  	   $m = getInfo($k);
-  	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $m]);
+  	   $mem = getInfo($k);
+  	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $mem]);
   	} 
     if ($text == "/start") {
       if ($name) {
