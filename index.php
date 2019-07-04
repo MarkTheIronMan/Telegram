@@ -61,7 +61,7 @@
       curl_close($ch);
       $request = json_decode($r, true);
       $reply = $request["main"]["temp"];
-      $response = "temperature in Moscow is about ". $reply. 'K';
+      $response = "temperature in ".$city_name." is about ". $reply. 'K';
       echo($reply);
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response/*, 'reply_markup' => $reply_markup*/ ]);
     } 
