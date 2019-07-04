@@ -59,9 +59,10 @@
       curl_close($ch);
       $request = json_decode($r, true);
       $reply = $request["main"]["temp"];
-      $response = "temperature in ".$city_name." is about ". $reply. 'K';
+      $nm = $request["name"];
+      $response = "temperature in ".$nm." is about ". $reply. 'K';
       echo($reply);
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response/*, 'reply_markup' => $reply_markup*/ ]);
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response]);
     } 
     elseif ($text == "/погода") {
   	  $reply = "Окей, я могу рассказать тебе про погоду";
