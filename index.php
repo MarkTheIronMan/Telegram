@@ -84,6 +84,9 @@
     }
     elseif ($text == "Увидеть последние запросы") {
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Как скажешь, мой повелитель']);
+      $otvet = $text;
+      $lul = getInfo($otvet);
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $lul]);
     }
     elseif ($text == "Новый город") {
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города']);
