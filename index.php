@@ -35,7 +35,7 @@
     }
      
   if ($text) {
-  	if ($text == "/newyork") { 	
+  	if ($text == "newyork") { 	
   	   $k = $text;
   	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $k]);
   	   $m = getInfo($k);
