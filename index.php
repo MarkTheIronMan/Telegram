@@ -37,7 +37,7 @@
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $reply]);
    }
 
-   if (strpos($text, '!') === 0) {
+   if (($text) and (strpos($text, '!') === 0)) {
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => 'ну ты и пидор']);
    }
 
