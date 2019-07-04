@@ -80,8 +80,9 @@
       $isNewSearch = TRUE;
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => 'Введите название города']);
     }
-    else{
-       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => getInfo($text)]);
+    else {
+       $city = $text;
+       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => getInfo($city)]);
     } 
   }
 
