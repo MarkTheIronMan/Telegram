@@ -14,8 +14,6 @@
   $name = $result["message"]["from"]["username"]; 
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.apikey.'';
-  $isNewSearch = FALSE;
- 
 
    function getInfo($arg): string {
    	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q='.$arg.'&appid='.apikey.'';
@@ -40,7 +38,7 @@
       else {
       $reply = "Приветствую тебя, Cтранник";
       } 
-    $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
     }
     elseif ($text == "/sayHello") {
   	  if ($name) {
@@ -61,12 +59,6 @@
       echo($reply);
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response/*, 'reply_markup' => $reply_markup*/ ]);
     } 
-/*  if (($text != "/nw") and ($mark)) {
-   	  $city = $text;   
-  	  $va = getInfo($city);
-  	  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $va ]);
-  	  $mark = FALSE;	
-  }  */
     elseif ($text == "/погода") {
   	  $reply = "Окей, я могу рассказать тебе про погоду";
   	  $keyboard = [["Увидеть последние запросы"],["Новый город"]];
@@ -77,10 +69,9 @@
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Как скажешь, мой повелитель']);
     }
     elseif ($text == "Новый город") {
-      $isNewSearch = TRUE;
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города']);
     }
-    elseif ($text) {
+    else {
        $city = $text;
        $reply = getInfo($city);
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $text]);
