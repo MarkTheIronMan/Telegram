@@ -74,11 +74,11 @@
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
     }
     elseif ("$text" == "Увидеть последние запросы") {
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' = "Как скажешь, мой повелитель"]);
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Как скажешь, мой повелитель"]);
     }
     elseif ("$text" == "Новый город") {
       $isNewSearch = TRUE;
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' = "Введите название города"]);
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Введите название города"]);
     }
     elseif (($isNewSearch) and ($text)) {
        $isNewSearch = false;
