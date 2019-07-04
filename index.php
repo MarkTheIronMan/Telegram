@@ -12,7 +12,7 @@
   $chat_id = $result["message"]["chat"]["id"]; 
   $name = $result["message"]["from"]["username"]; 
   $city_name = 'moscow';
-  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.myapikey.'';
+/*  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.myapikey.''; */
 
    function getInfo($arg): string {
    	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q='.$arg.'&appid='.myapikey.'';
