@@ -83,7 +83,7 @@
   	 $isNewDialog = true;
   	 $reply = "Окей, я могу рассказать тебе про погоду";
   	 $keyboard = [["Увидеть последние запросы"],["Новый город"]];
-  	 $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
+  	 $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true, 'remove_keyboard' => true]);
      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
   }
   if (("$text" == "Увидеть последние запросы") and ($isNewDialog)) {
