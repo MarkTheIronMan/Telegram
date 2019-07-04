@@ -3,7 +3,7 @@
   use Telegram\Bot\Api; 
 
   const RESP = "Введите название города";
-  const apikey = '2ef74c382ac90947f76e48a4cb24fca2';
+  const myapikey = '2ef74c382ac90947f76e48a4cb24fca2';
 
  
   $telegram = new Api('698149481:AAFNPsmhDJ2a_dzbVFjiiGCc3TgpGft-0Xk');
@@ -12,10 +12,10 @@
   $chat_id = $result["message"]["chat"]["id"]; 
   $name = $result["message"]["from"]["username"]; 
   $city_name = 'moscow';
-  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.apikey.'';
+  $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.myapikey.'';
 
    function getInfo($arg): string {
-   	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q='.$arg.'&appid='.apikey.'';
+   	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q='.$arg.'&appid='.myapikey.'';
        $ch = curl_init($newurl);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
        $r = curl_exec($ch);
