@@ -73,14 +73,14 @@
   	  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true]);
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
     }
-    elseif ("$text" == "Увидеть последние запросы") {
+    elseif ($text == "Увидеть последние запросы") {
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => 'Как скажешь, мой повелитель']);
     }
-    elseif ("$text" == "Новый город") {
+    elseif ($text == "Новый город") {
       $isNewSearch = TRUE;
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => 'Введите название города']);
     }
-    else {
+    elseif ($text) {
        $city = $text;
        $reply = getInfo($city);
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $reply]);
