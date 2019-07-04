@@ -82,7 +82,8 @@
     }
     else {
        $city = $text;
-       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => getInfo($city)]);
+       $reply = getInfo($city);
+       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $reply);
     } 
   }
 
