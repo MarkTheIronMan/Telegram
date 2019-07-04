@@ -35,6 +35,9 @@
     }
      
   if ($text) {
+  	$data = [
+         "city" =>$text
+       ];
   	if ($text == "!newyork") { 	
   	   $k = $text;
   	   $k = ltrim($k, "!");
@@ -91,18 +94,19 @@
     elseif ($text == "Новый город") {
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города']);
     }
-    elseif (substr($text, 0, 1) === '!') {
-       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => 'ну ты и пидор']);
+    elseif (substr($data["city"], 0, 1) === '!') {
+      $telegram->sendMassage(['chat_id' => $chat_id, 'text' => 'ну ты и пидор']);
  /*      $city = ltrim($text, '!');   
        $reply = getInfo($city);
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
-  */  } 
+ */ } 
     elseif ($text == "/testo") {
       $data = [
-      	"city" => ($text)
+      	"city" => $text,
+      	"id_user" => $chat_id
       ]; 
-      $m = $data["city"];
-      $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $m]);
+      $mom = $data["city"];
+      $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $mom]);
     }
   }
 
