@@ -88,11 +88,11 @@
   	 $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
      if ("$text" == "Увидеть последние запросы") {
-     	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Как скажешь, мой повелитель"]);
+     	$telegram->sendMessage([ 'chat_id' => $chat_id, "Как скажешь, мой повелитель"]);
      }
      elseif ("$text" == "Новый город") {
      	$isNewSearch = TRUE;
-     	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Введиете название города"]);
+     	$telegram->sendMessage([ 'chat_id' => $chat_id, "Введите название города"]);
      }
      if (($isNewSearch) and ($text)) {
      	$isNewSearch = false;
