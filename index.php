@@ -12,7 +12,6 @@
   $text = $result["message"]["text"];
   $chat_id = $result["message"]["chat"]["id"]; 
   $name = $result["message"]["from"]["username"]; 
-  $wasStart = FALSE;
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.apikey.'';
   $mark = FALSE;
@@ -33,71 +32,59 @@
        $str = 'Температура в '.$name.' составляет '.$tempfloat.' градусов. Скорость ветра '.$wind.' метров в секунду.';
        return $str;
     }
-
-  if (($text == "/start") and ($wasStart == false)) {
-  	$wasStart = TRUE;
-  	if ($name) {
-      $reply = "Здравствуй, " .$name;
-    }
-    else {
-      $reply = "Здравствуй, Cтранник";
-    }
+  if ($text) { 	
+    if ($text == "/start") {
+      if ($name) {
+        $reply = "Добро пожаловать, " .$name;
+      }
+      else {
+      $reply = "Приветствую тебя, Cтранник";
+      } 
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
-  }
-
-  if ($text == "/sayHello") {
-  	if ($name) {
+    }
+    elseif ($text == "/sayHello") {
+  	  if ($name) {
       $reply = "Здравствуй, " .$name;
-    }
-    else {
+      }
+      else {
       $reply = "Здравствуй, Cтранник";
+      }
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
     }
-    $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
-  }
-  
-
-  if ($text == "/info") {
-  	$ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $r = curl_exec($ch);
-    curl_close($ch);
-    $request = json_decode($r, true);
-    $reply = $request["main"]["temp"];
-    $response = "temperature in Moscow is about ". $reply. 'K';
-    echo($reply);
-    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response/*, 'reply_markup' => $reply_markup*/ ]);
-  } 
-
-  if ($text == "/nw") {
-  	$reply = RESP;
-  	$mark = TRUE;
-  	$telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
-  }
+    elseif ($text == "/test") {
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $r = curl_exec($ch);
+      curl_close($ch);
+      $request = json_decode($r, true);
+      $reply = $request["main"]["temp"];
+      $response = "temperature in Moscow is about ". $reply. 'K';
+      echo($reply);
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $response/*, 'reply_markup' => $reply_markup*/ ]);
+    } 
 /*  if (($text != "/nw") and ($mark)) {
    	  $city = $text;   
   	  $va = getInfo($city);
   	  $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $va ]);
   	  $mark = FALSE;	
   }  */
-  if ($text == "/погода") {
-  	 $isNewDialog = true;
-  	 $reply = "Окей, я могу рассказать тебе про погоду";
-  	 $keyboard = [["Увидеть последние запросы"],["Новый город"]];
-  	 $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true, 'remove_keyboard' => true]);
-     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
+    elseif ($text == "/погода") {
+  	  $reply = "Окей, я могу рассказать тебе про погоду";
+  	  $keyboard = [["Увидеть последние запросы"],["Новый город"]];
+  	  $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true]);
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
+    }
+    elseif ("$text" == "Увидеть последние запросы") {
+      $telegram->sendMessage([ 'chat_id' => $chat_id, "Как скажешь, мой повелитель"]);
+    }
+    elseif ("$text" == "Новый город") {
+      $isNewSearch = TRUE;
+      $telegram->sendMessage([ 'chat_id' => $chat_id, "Введите название города"]);
+    }
+    elseif (($isNewSearch) and ($text)) {
+       $isNewSearch = false;
+       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => getInfo($text)]);
+    } 
   }
-  if (("$text" == "Увидеть последние запросы") and ($isNewDialog)) {
-     $telegram->sendMessage([ 'chat_id' => $chat_id, "Как скажешь, мой повелитель"]);
-  }
-  if (("$text" == "Новый город") and ($isNewDialog)) {
-     $isNewSearch = TRUE;
-     $telegram->sendMessage([ 'chat_id' => $chat_id, "Введите название города"]);
-  }
-  if (($isNewSearch) and ($text)) {
-     $isNewSearch = false;
-     $telegram->sendMassage(['chat_id' => $chat_id, 'text' => getInfo($text)]);
-  }
-  
 
   
   echo("test");
