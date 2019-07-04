@@ -39,6 +39,10 @@
    }
 
   if ($text) { 	
+  	$m = substr($text, 0, 1);
+  	if ($m == 1) {
+  	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => 'ну ты и пидор']);
+  	} 
     if ($text == "/start") {
       if ($name) {
         $reply = "Добро пожаловать, " .$name;
