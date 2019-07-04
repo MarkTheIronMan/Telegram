@@ -1,13 +1,9 @@
 <?php
   include('vendor/autoload.php'); 
   use Telegram\Bot\Api; 
-  use Telegram\Bot\Commands\Command;
-  use Telegram\Bot\Keyboard\Keyboard;
-
 
   const RESP = "Введите название города";
   const myapikey = '2ef74c382ac90947f76e48a4cb24fca2';
-
  
   $telegram = new Api('698149481:AAFNPsmhDJ2a_dzbVFjiiGCc3TgpGft-0Xk');
   $result = $telegram -> getWebhookUpdates(); 
@@ -26,7 +22,7 @@
        $request = json_decode($r, true);
        $nameCity = $request["name"];
        $tempCity = $request["main"]["temp"];
-       $tempCels = 0 + $tempCity;
+       $tempCels = /*0 +*/ $tempCity;
       /* $tempCels = round($tempCels - 273.15); */
        $windCity = $request["wind"]["speed"];
        $str = 'Температура в '.$nameCity.' составляет '.$tempCels.' градусов Цельсия. Скорость ветра '.$windCity.' метров в секунду.';
@@ -35,7 +31,7 @@
      
   if ($text) {
   	if ($text == "moscow") { 	
-  	   $m = getInfo($text);
+  	   $m = getInfo('moscow');
   	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $m]);
   	} 
     if ($text == "/start") {
