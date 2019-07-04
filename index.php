@@ -30,6 +30,13 @@
        $str = 'Температура в '.$nameC.' составляет '.$tempCels.' градусов. Скорость ветра '.$windC.' метров в секунду.';
        return $str;
     }
+
+  if ($text{0} == '!') {
+       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => 'ну ты и пидор']);
+       $city = (ltrim($text, '!'));
+       $reply = getInfo($city);
+       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
+
   if ($text) { 	
     if ($text == "/start") {
       if ($name) {
