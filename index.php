@@ -29,13 +29,12 @@
        $str = 'Температура в '.$nameCity.' составляет '.$tempCels.' градусов Цельсия. Скорость ветра '.$windCity.' метров в секунду.';
        return $str;
     }
-   
-
-  if ($text == "moscow") { 	
+     
+  if ($text) {
+  	if ($text == "moscow") { 	
   	   $m = getInfo($text);
   	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $m]);
   	} 
-  if ($text) {
     if ($text == "/start") {
       if ($name) {
         $reply = "Добро пожаловать, " .$name;
