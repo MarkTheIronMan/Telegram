@@ -22,12 +22,12 @@
        $r = curl_exec($ch);
        curl_close($ch);
        $request = json_decode($r, true);
-       $name = $request["name"];
-       $temp = $request["main"]["temp"];
-       $tempfloat = 0 + $temp;
-       $tempfloat = round($tempfloat - 273.15); 
-       $wind = $request["wind"]["speed"];
-       $str = 'Температура в '.$name.' составляет '.$tempfloat.' градусов. Скорость ветра '.$wind.' метров в секунду.';
+       $nameC = $request["name"];
+       $tempC = $request["main"]["temp"];
+       $tempCels = 0 + $temp;
+       $tempCels = round($tempCels - 273.15); 
+       $windC = $request["wind"]["speed"];
+       $str = 'Температура в '.$nameC.' составляет '.$tempCels.' градусов. Скорость ветра '.$windC.' метров в секунду.';
        return $str;
     }
   if ($text) { 	
