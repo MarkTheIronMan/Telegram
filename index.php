@@ -32,7 +32,8 @@
    
 
   if ($text == "moscow") { 	
-  	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => getInfo($text)]);
+  	   $m = getInfo($text);
+  	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $m]);
   	} 
   if ($text) {
     if ($text == "/start") {
