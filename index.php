@@ -13,7 +13,7 @@
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . $city_name .'&appid=' . myapikey . ''; 
 
-   function getInfo($arg): string {
+   function getInfo($arg) {
 
    	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q=' . $arg .'&appid=' . myapikey . '';
        $s = curl_init($newurl);
@@ -105,20 +105,14 @@
     }
     elseif ($text == "Новый город") {
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города']);
-    }
-    elseif (substr($data["city"], 0, 1) === '!') {
-      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $data["city"]]);
- /*      $city = ltrim($text, '!');   
-       $reply = getInfo($city);
-       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
- */ } 
+    } 
     elseif ($text == "/testo") {
       $data = [
       	"city" => $text,
       	"id_user" => $chat_id
       ]; 
       $mom = $data["city"];
-      $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $mom]);
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $mom]);
     }
   }
 
