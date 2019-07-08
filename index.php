@@ -46,6 +46,7 @@
        ];
     
     if (substr($data["city"], 0, 1) === '!') {
+      $data["city"] = ltrim($data["city"], '!');
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $data["city"]]);
  /*      $city = ltrim($text, '!');   
        $reply = getInfo($city);
