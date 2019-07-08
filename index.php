@@ -23,12 +23,12 @@
        $request = json_decode($r, true);
        if ($request["cod"] == "200") {
          $nameCity = $request["name"];
-         $img = $request["weather"]["icon"];
+         $img = $request["weather"][0]["icon"];
          $tempCity = $request["main"]["temp"];
          $tempCels = 0 + $tempCity;
          $tempCels = round($tempCels - 273.15); 
          $windCity = $request["wind"]["speed"];
-         $imgUrl = 'http://openweathermap.org/img/wn/'. $img .'.png';
+         $imgUrl = 'http://openweathermap.org/img/wn/'. $img .'@2x.png';
          $res = "Температура в ".$nameCity." составляет ".$tempCels." градусов Цельсия. Скорость ветра ".$windCity." метров в секунду. <a href=". $imgUrl ."></a>";
          return $res;
        }
