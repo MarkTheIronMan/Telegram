@@ -78,7 +78,7 @@
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
     }
     elseif ($text == "/help") {
-      $help = 'Список доступных команд: \n/sayHello - Приветствие \n/погода - Меню погоды \n/фото - Фотографии';
+      $help = 'Список доступных команд:'<br/>'/sayHello - Приветствие'<br/>'/погода - Меню погоды'<br/>'/фото - Фотографии';
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $help]);
     } 
     elseif ($text == "/погода") {
