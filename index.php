@@ -13,10 +13,6 @@
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . $city_name .'&appid=' . myapikey . ''; 
 
-   function sendMessage($reply, $chat_id, $telegram) {
-
-   }
-  
    function getInfo($arg): string {
 
    	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q=' . $arg .'&appid=' . myapikey . '';
@@ -46,8 +42,9 @@
        ];
     
     if (substr($data["city"], 0, 1) === '!') {
-      $data["city"] = ltrim($data["city"], '!');
-      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $data["city"]]);
+      $cityName = ltrim($data["city"], '!');
+      $reply = getInfo($cityName);
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $cityName]);
  /*      $city = ltrim($text, '!');   
        $reply = getInfo($city);
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
