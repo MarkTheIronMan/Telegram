@@ -78,7 +78,8 @@
       $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
     }
     elseif ($text == "/help") {
-      $help = 'Список доступных команд:
+      $help = '
+      Список доступных команд:
       /sayHello - Приветствие
       /погода - Меню погоды
       /фото - Фотографии';
@@ -97,8 +98,9 @@
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $lul]);
     }
     elseif ($text == "Новый город") {
-      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => 'Введите название города.
-      Например: !Москва']);
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => '
+      	Введите название города.
+      	Например: !Москва']);
     } 
     elseif ($text == "/testo") {
       $data = [
