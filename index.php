@@ -23,11 +23,13 @@
        $request = json_decode($r, true);
        if ($request["cod"] == "200") {
          $nameCity = $request["name"];
+         $img = $request["weather"]["icon"];
          $tempCity = $request["main"]["temp"];
          $tempCels = 0 + $tempCity;
          $tempCels = round($tempCels - 273.15); 
          $windCity = $request["wind"]["speed"];
-         $res = "Температура в ".$nameCity." составляет ".$tempCels." градусов Цельсия. Скорость ветра ".$windCity." метров в секунду.";
+         $imgUrl = 'http://openweathermap.org/img/wn/'. $img .'.png';
+         $res = "Температура в ".$nameCity." составляет ".$tempCels." градусов Цельсия. Скорость ветра ".$windCity." метров в секунду. <a href=". $imgUrl .">&#8205;</a>";
          return $res;
        }
        else {
@@ -35,7 +37,7 @@
        	 return $res;
        }
     }
-     
+
   if ($text) {
   	$data = [
          "city" =>$text
@@ -45,7 +47,7 @@
       $cityName = ltrim($data["city"], '!');
       $format = str_replace(" ","",$cityName);
       $reply = getInfo($format);
-      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'parse_mode' => 'HTML']);
  /*      $city = ltrim($text, '!');   
        $reply = getInfo($city);
        $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
