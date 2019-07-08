@@ -13,12 +13,17 @@
   $city_name = 'moscow';
   $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . $city_name .'&appid=' . myapikey . ''; 
 
-   function getInfo($arg) {
+   function sendMessage($reply, $chat_id, $telegram) {
+
+   }
+  
+   function getInfo($arg): string {
+
    	   $newurl = 'https://api.openweathermap.org/data/2.5/weather?q=' . $arg .'&appid=' . myapikey . '';
-       $ch = curl_init($newurl);
-       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-       $r = curl_exec($ch);
-       curl_close($ch);
+       $s = curl_init($newurl);
+       curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
+       $r = curl_exec($s);
+       curl_close($s);
        $request = json_decode($r, true);
        if ($request["cod"] == "200") {
          $nameCity = $request["name"];
@@ -31,6 +36,7 @@
        }
        else {
        	 $str = "Введите корректные данные";
+       	 return $str;
        }
     }
      
