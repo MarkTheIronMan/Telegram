@@ -44,6 +44,14 @@
   	$data = [
          "city" =>$text
        ];
+    
+    if (substr($data["city"], 0, 1) === '!') {
+      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $data["city"]]);
+ /*      $city = ltrim($text, '!');   
+       $reply = getInfo($city);
+       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
+ */ } 
+
   	if ($text == "!newyork") { 	
   	   $k = $data["city"];
   	   $k = ltrim($k, "!");
