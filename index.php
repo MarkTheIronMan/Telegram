@@ -47,9 +47,9 @@
   	if ($text == "!newyork") { 	
   	   $k = $data["city"];
   	   $k = ltrim($k, "!");
-  	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $k]);
+  	   $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $k]);
   	   $mem = getInfo($k);
-  	   $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $mem]);
+  	   $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $mem]);
   	} 
     if ($text == "/start") {
       if ($name) {
