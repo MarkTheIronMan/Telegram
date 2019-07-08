@@ -38,27 +38,12 @@
     }
 
   if ($text) {
+  	$date = date('Y-m-d H:i:s');
   	$data = [
-         "city" =>$text
+         "city" => $text,
+         "chat_id" => 'chat_id',
+         "date" => $date
        ];
-
-    if (substr($data["city"], 0, 1) === '!') {
-      $cityName = ltrim($data["city"], '!');
-      $format = str_replace(" ","",$cityName);
-      $reply = getInfo($format);
-      $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'parse_mode' => 'HTML']);
- /*      $city = ltrim($text, '!');   
-       $reply = getInfo($city);
-       $telegram->sendMassage(['chat_id' => $chat_id, 'text' => $city]);
- */ } 
-
-  	if ($text == "!newyork") { 	
-  	   $k = $data["city"];
-  	   $k = ltrim($k, "!");
-  	   $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $k]);
-  	   $mem = getInfo($k);
-  	   $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $mem]);
-  	} 
     if ($text == "/start") {
       if ($name) {
         $reply = "Добро пожаловать, " .$name;
