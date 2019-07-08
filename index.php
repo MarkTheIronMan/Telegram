@@ -28,8 +28,8 @@
          $tempCels = 0 + $tempCity;
          $tempCels = round($tempCels - 273.15); 
          $windCity = $request["wind"]["speed"];
-         $imgUrl = 'http://openweathermap.org/img/wn/'. $img .'.png';
-         $res = "Температура в ".$nameCity." составляет ".$tempCels." градусов Цельсия. Скорость ветра ".$windCity." метров в секунду. <a href=". $imgUrl .">&#8205;</a>";
+         $imgUrl = 'http://openweathermap.org/img/wn/'. $img .'@2x.png';
+         $res = "Температура в ".$nameCity." составляет ".$tempCels." градусов Цельсия. Скорость ветра ".$windCity." метров в секунду. <a href='". $imgUrl ."''>&#8205;</a>";
          return $res;
        }
        else {
