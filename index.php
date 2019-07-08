@@ -24,8 +24,8 @@
        if ($request["cod"] == "200") {
          $nameCity = $request["name"];
          $tempCity = $request["main"]["temp"];
-         $tempCels = /*0 +*/ $tempCity;
-        /* $tempCels = round($tempCels - 273.15); */
+         $tempCels = 0 + $tempCity;
+         $tempCels = round($tempCels - 273.15); 
          $windCity = $request["wind"]["speed"];
          $res = "Температура в ".$nameCity." составляет ".$tempCels." градусов Цельсия. Скорость ветра ".$windCity." метров в секунду.";
          return $res;
