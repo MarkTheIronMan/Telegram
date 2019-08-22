@@ -47,7 +47,7 @@
     if (substr($data["city"], 0, 1) == "!") {
     	$ct = ltrim($data["city"], "!");
     	$out = getInfo($ct);
-    	$telegram->sendMessage(['chat_id' => $chat_id, 'text' => $out, 'parse_mode'='html']);
+    	$telegram->sendMessage(['chat_id' => $chat_id, 'text' => $out, 'parse_mode'='markdown']);
     }
     if ($text == "/start") {
       if ($name) {
