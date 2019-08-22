@@ -44,6 +44,11 @@
          "chat_id" => 'chat_id',
          "date" => $date
        ];
+    if (substr($data["city"], 0, 1) == "!") {
+    	$ct = ltrim($data["city"], "!");
+    	$out = getInfo($ct);
+    	$telegram->sendMessage(['chat_id' => $chat_id, 'text' => $out]);
+    }
     if ($text == "/start") {
       if ($name) {
         $reply = "Добро пожаловать, " .$name;
